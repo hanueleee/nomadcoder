@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+  <body></body>
+  <script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
+  <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+  <div id="root"></div>
+
+  <script type="text/babel">
+    const root = document.getElementById("root");
+
+    // 컴포넌트의 첫번째 글자는 반드시 대문자여야 한다
+    const Title = () => (
+      // 방법1 : arrow function
+      <h3 id="title" onMouseEnter={() => console.log("mouse enter")}>
+        Hello I'm a span
+      </h3>
+    );
+    function Button() {
+      // 방법2 : 그냥 function
+      return (
+        <button
+          style={{ backgroundColor: "tomato" }}
+          onClick={() => console.log("click")}
+        >
+          Click me
+        </button>
+      );
+    }
+    /*
+    const h3 = React.createElement(
+      "h3",
+      {
+        id: "title",
+        onMouseEnter: () => console.log("mouse enter"),
+      },
+      "Hello I'm a span"
+    );
+    const btn = React.createElement(
+      "button",
+      {
+        onClick: () => console.log("click"),
+        style: { backgroundColor: "tomato" },
+      },
+      "Click me"
+    );
+    */
+
+    const Container = () => (
+      <div>
+        <Title />
+        <Button />
+      </div>
+    );
+    /*
+    const container = React.createElement("div", null, [Title, Button]);
+    */
+
+    ReactDOM.render(<Container />, root); // render : 사용자에게 보여준다(React element를 가지고 HTML로 만들어 배치)
+  </script>
+</html>
+
+<!--  
+    react : interactive한 UI를 만들 수 있게 함
+    react-dom : react element들을 HTML body에 둘 수 있게 해줌
+-->
+<!-- 
+    JS : HTML -> JS
+    React : JS -> HTML
+ -->
+<!-- 
+    JSX : js 확장한 문법
+        HTML과 유사한 문법을 사용해서 React요소를 만들 수 있게 함
+    Babel : 코드 변환시켜주는 애
+        JSX코드를 브라우저가 이해할 수 있는 형태로 변환
+ -->
